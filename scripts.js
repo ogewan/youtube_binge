@@ -95,7 +95,9 @@ function updateOptions() {
   // TODO: rebuilding everytime is not optimal
   field.innerHTML = '';
   field.append(document.createElement('option'));
-  const options = Object.values(data).map(makeOption);
+  const sortedList = Object.values(data).sort(
+      (a, b) => a.snippet.title.localeCompare(b.snippet.title));
+  const options = sortedList.map(makeOption);
   field.append(...options);
 }
 
